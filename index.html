@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>FORTNITE INTEL HUB | LOOtn — XP Maps, STW Meta &amp; Patch Watch</title>
+
+    <!-- SEO -->
+    <meta name="description" content="LOOtn's Fortnite Intel Hub — curated XP maps, STW trap meta, creator island codes, and patch risk tracker. Updated regularly.">
+    <meta name="keywords" content="fortnite xp maps, fortnite afk xp, save the world meta, fortnite creator codes, fortnite patch tracker, LOOtn">
+    <meta name="author" content="LOOtn">
+    <meta name="theme-color" content="#030508">
+
+    <!-- Open Graph (Discord / Reddit / Facebook previews) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FORTNITE INTEL HUB | LOOtn">
+    <meta property="og:description" content="Curated XP maps, STW trap meta, creator island codes &amp; patch risk — all in one place.">
+    <meta property="og:image" content="https://lootn.gg/preview.png">
+    <meta property="og:url" content="https://lootn.gg">
+    <meta property="og:site_name" content="LOOtn">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FORTNITE INTEL HUB | LOOtn">
+    <meta name="twitter:description" content="Curated XP maps, STW meta &amp; patch watch. Updated by LOOtn.">
+    <meta name="twitter:image" content="https://lootn.gg/preview.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        :root {
+            --bg:        #030508;
+            --bg1:       #060c14;
+            --bg2:       #0b1220;
+            --border:    #1a2540;
+            --border2:   #243050;
+            --text:      #c8d8f0;
+            --text-dim:  #5a7090;
+            --text-mid:  #8090b0;
+            --pink:      #F472B6;
+            --cyan:      #22d3ee;
+            --purple:    #a78bfa;
+            --orange:    #FF6B35;
+            --gold:      #FFD700;
+            --green:     #22c55e;
+            --red:       #ef4444;
+            --font-head: 'Rajdhani', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html { scroll-behavior:smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content:'';
+            position:fixed; inset:0;
+            background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.05) 2px,rgba(0,0,0,.05) 4px);
+            pointer-events:none; z-index:0;
+        }
+
+        ::-webkit-scrollbar { width:5px; height:5px; }
+        ::-webkit-scrollbar-track { background:var(--bg1); }
+        ::-webkit-scrollbar-thumb { background:var(--border2); border-radius:4px; }
+        ::-webkit-scrollbar-thumb:hover { background:var(--cyan); }
+
+        @keyframes fadeUp   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+        @keyframes ticker   { 0%{transform:translateX(100%)} 100%{transform:translateX(-200%)} }
+
+        /* Layout */
+        #app { position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 16px 48px; }
+
+        /* Header */
+        .header {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:18px 0 14px; border-bottom:1px solid var(--border); margin-bottom:20px;
+            flex-wrap:wrap; gap:10px;
+        }
+        .header-left { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+        .brand {
+            font-family:var(--font-head); font-size:clamp(22px,5vw,32px); font-weight:700;
+            letter-spacing:2px;
+            background:linear-gradient(90deg,var(--cyan) 0%,var(--purple) 50%,var(--pink) 100%);
+            -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1;
+        }
+        .brand-tag {
+            font-family:var(--font-mono); font-size:10px;
+            background:rgba(34,211,238,.1); border:1px solid rgba(34,211,238,.25);
+            color:var(--cyan); padding:3px 8px; border-radius:4px; letter-spacing:.5px;
+        }
+        .header-right { font-family:var(--font-mono); font-size:11px; color:var(--text-dim); text-align:right; }
+        .header-right .upd { color:var(--green); display:block; }
+
+        /* Ticker */
+        .ticker-wrap {
+            background:var(--bg1); border:1px solid var(--border); border-radius:6px;
+            overflow:hidden; height:28px; margin-bottom:20px; position:relative;
+        }
+        .ticker-label {
+            position:absolute; left:0; top:0; bottom:0;
+            background:var(--pink); color:#000;
+            font-family:var(--font-head); font-size:11px; font-weight:700; letter-spacing:1px;
+            padding:0 12px; display:flex; align-items:center; z-index:2; white-space:nowrap;
+        }
+        .ticker-track { height:100%; padding-left:90px; overflow:hidden; display:flex; align-items:center; }
+        .ticker-inner {
+            white-space:nowrap; font-family:var(--font-mono); font-size:11px; color:var(--text-mid);
+            animation:ticker 50s linear infinite;
+        }
+        .ticker-inner span { margin:0 24px; }
+        .t-hot  { color:var(--pink) !important; }
+        .t-safe { color:var(--green) !important; }
+        .t-warn { color:var(--gold) !important; }
+
+        /* Grids */
+        .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+        @media(max-width:768px) { .grid-2 { grid-template-columns:1fr; } }
+        @media(max-width:540px) { .header { flex-direction:column; align-items:flex-start; } .header-right { text-align:left; } }
+
+        /* Panel */
+        .panel {
+            background:var(--bg1); border:1px solid var(--border); border-radius:12px;
+            overflow:hidden; animation:fadeUp .4s ease both; margin-bottom:20px;
+        }
+        .panel-head {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:12px 16px 10px; border-bottom:1px solid var(--border);
+        }
+        .panel-title {
+            font-family:var(--font-head); font-size:15px; font-weight:700;
+            letter-spacing:1.5px; display:flex; align-items:center; gap:8px;
+        }
+        .panel-body { padding:14px 16px; }
+        .panel-pink   { border-color:rgba(244,114,182,.3); }
+        .panel-cyan   { border-color:rgba(34,211,238,.3); }
+        .panel-purple { border-color:rgba(167,139,250,.3); }
+        .panel-orange { border-color:rgba(255,107,53,.3); }
+        .panel-green  { border-color:rgba(34,197,94,.3); }
+        .panel-pink   .panel-head { border-color:rgba(244,114,182,.2); }
+        .panel-cyan   .panel-head { border-color:rgba(34,211,238,.2); }
+        .panel-purple .panel-head { border-color:rgba(167,139,250,.2); }
+        .panel-orange .panel-head { border-color:rgba(255,107,53,.2); }
+        .panel-green  .panel-head { border-color:rgba(34,197,94,.2); }
+
+        /* Badge */
+        .badge {
+            display:inline-block; font-family:var(--font-mono); font-size:9px;
+            font-weight:700; letter-spacing:.5px; padding:2px 7px; border-radius:3px; text-transform:uppercase;
+        }
+        .badge-pink   { background:rgba(244,114,182,.15); color:var(--pink);   border:1px solid rgba(244,114,182,.3); }
+        .badge-cyan   { background:rgba(34,211,238,.12);  color:var(--cyan);   border:1px solid rgba(34,211,238,.3); }
+        .badge-purple { background:rgba(167,139,250,.12); color:var(--purple); border:1px solid rgba(167,139,250,.3); }
+        .badge-orange { background:rgba(255,107,53,.12);  color:var(--orange); border:1px solid rgba(255,107,53,.3); }
+        .badge-green  { background:rgba(34,197,94,.12);   color:var(--green);  border:1px solid rgba(34,197,94,.3); }
+        .badge-gold   { background:rgba(255,215,0,.12);   color:var(--gold);   border:1px solid rgba(255,215,0,.3); }
+        .badge-red    { background:rgba(239,68,68,.12);   color:var(--red);    border:1px solid rgba(239,68,68,.3); }
+
+        .section-label {
+            font-family:var(--font-mono); font-size:10px; color:var(--text-dim);
+            letter-spacing:2px; text-transform:uppercase; margin-bottom:10px;
+        }
+
+        /* Modes grid */
+        .modes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:8px; margin-bottom:16px; }
+        @media(max-width:480px) { .modes-grid { grid-template-columns:repeat(2,1fr); } }
+        .mode-card {
+            background:var(--bg2); border:1px solid var(--border); border-radius:8px;
+            padding:10px; transition:border-color .2s,background .2s;
+        }
+        .mode-card:hover { background:#0e1828; border-color:var(--border2); }
+        .mode-card .icon { font-size:18px; margin-bottom:5px; display:block; }
+        .mode-card .label { font-family:var(--font-head); font-size:13px; font-weight:600; letter-spacing:.5px; line-height:1.2; margin-bottom:3px; }
+        .mode-card .desc  { font-size:10px; color:var(--text-dim); line-height:1.4; }
+        .mode-card.hot-mode { border-color:rgba(255,215,0,.35); }
+        .mode-card.hot-mode .label { color:var(--gold); }
+        .hot-note {
+            background:rgba(244,114,182,.06); border:1px solid rgba(244,114,182,.2);
+            border-radius:8px; padding:10px 12px; font-size:12px; color:var(--text-mid);
+        }
+
+        /* Maps table */
+        .maps-table { width:100%; border-collapse:collapse; }
+        .maps-table th {
+            font-family:var(--font-mono); font-size:9px; letter-spacing:1.5px;
+            color:var(--text-dim); text-align:left; padding:6px 8px 8px;
+            border-bottom:1px solid var(--border);
+        }
+        .maps-table td { padding:8px; border-bottom:1px solid rgba(26,37,64,.6); font-size:12px; vertical-align:middle; }
+        .maps-table tr:last-child td { border-bottom:none; }
+        .maps-table tr:hover td { background:rgba(255,255,255,.02); }
+        .map-name { font-weight:500; color:var(--text); font-size:12px; }
+        .map-code { font-family:var(--font-mono); font-size:11px; color:var(--text-mid); letter-spacing:.5px; }
+        .map-xp   { font-family:var(--font-mono); font-size:10px; color:var(--green); }
+
+        /* Copy btn */
+        .copy-btn {
+            background:var(--bg2); border:1px solid var(--border2); border-radius:4px;
+            color:var(--text-dim); cursor:pointer; font-family:var(--font-mono);
+            font-size:9px; font-weight:700; letter-spacing:1px; padding:3px 9px;
+            transition:all .15s; white-space:nowrap;
+        }
+        .copy-btn:hover { border-color:var(--cyan); color:var(--cyan); background:rgba(34,211,238,.06); }
+        .copy-btn.copied { border-color:var(--green); color:var(--green); background:rgba(34,197,94,.08); }
+
+        /* Trap list */
+        .trap-list { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+        .trap-row {
+            display:flex; align-items:center; gap:10px;
+            background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:8px 10px;
+        }
+        .trap-tier { font-family:var(--font-head); font-size:14px; font-weight:700; min-width:22px; text-align:center; }
+        .trap-info { flex:1; min-width:0; }
+        .trap-name { font-size:12px; font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .trap-desc { font-size:10px; color:var(--text-dim); margin-top:1px; }
+        .trap-type { font-family:var(--font-mono); font-size:8px; padding:1px 5px; border-radius:3px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); color:var(--text-dim); }
+
+        /* Glitch rows */
+        .glitch-wrap { background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:10px 12px; margin-bottom:10px; }
+        .glitch-row {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:6px 0; border-bottom:1px solid rgba(26,37,64,.5); font-size:12px;
+        }
+        .glitch-row:last-child { border-bottom:none; }
+        .glitch-key { color:var(--text-mid); font-size:11px; }
+        .glitch-pills { display:flex; gap:5px; align-items:center; }
+
+        /* Patch */
+        .risk-meter { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+        .risk-level { font-family:var(--font-head); font-size:30px; font-weight:700; letter-spacing:2px; white-space:nowrap; }
+        .risk-bar-wrap { flex:1; height:6px; background:rgba(255,255,255,.07); border-radius:3px; overflow:hidden; }
+        .risk-bar { height:100%; border-radius:3px; }
+        .risk-row {
+            display:flex; justify-content:space-between; align-items:center;
+            padding:6px 0; border-bottom:1px solid rgba(26,37,64,.5); font-size:12px;
+        }
+        .risk-row:last-child { border-bottom:none; }
+        .risk-key { color:var(--text-dim); font-size:11px; }
+        .risk-val { font-family:var(--font-mono); font-size:11px; text-align:right; max-width:55%; line-height:1.4; }
+
+        /* Community note */
+        .note {
+            font-size:10px; color:var(--text-dim); font-style:italic;
+            margin-top:10px; padding:8px 10px;
+            background:rgba(255,215,0,.04); border:1px solid rgba(255,215,0,.12);
+            border-radius:6px; line-height:1.5;
+        }
+
+        /* Log */
+        .log-list { display:flex; flex-direction:column; gap:2px; max-height:160px; overflow-y:auto; }
+        .log-entry { display:flex; align-items:flex-start; gap:8px; padding:5px 0; border-bottom:1px solid rgba(26,37,64,.4); font-size:11px; animation:fadeUp .3s ease; }
+        .log-entry:last-child { border-bottom:none; }
+        .log-icon { min-width:18px; text-align:center; }
+        .log-msg  { flex:1; line-height:1.4; }
+        .log-time { font-family:var(--font-mono); font-size:9px; color:var(--text-dim); white-space:nowrap; padding-top:1px; }
+
+        /* Footer */
+        .footer { text-align:center; padding:24px 0 8px; border-top:1px solid var(--border); margin-top:8px; }
+        .sig {
+            font-family:var(--font-mono); font-size:15px; font-weight:700; letter-spacing:1px;
+            background:linear-gradient(135deg,var(--gold),var(--pink));
+            -webkit-background-clip:text; background-clip:text; color:transparent;
+        }
+        .footer-sub { font-size:10px; color:var(--text-dim); margin-top:6px; line-height:1.6; }
+    </style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+(function() {
+    'use strict';
+
+    const CREATOR_SIGNATURE = "~ LOOtn";
+    const LAST_UPDATED = "May 1, 2026"; // ← UPDATE THIS each time you refresh data
+
+    // ── DATA ──────────────────────────────────────────────────────────
+
+    const EPIC_MODES = [
+        { label:"Battle Royale",  icon:"🎯", color:"var(--pink)",   desc:"Standard 100-player drop", hot:false },
+        { label:"Zero Build",     icon:"🏃", color:"var(--cyan)",   desc:"No build, pure gunplay",   hot:false },
+        { label:"Ranked",         icon:"🏆", color:"var(--gold)",   desc:"BR + ZB ranked ladder",    hot:false },
+        { label:"Reload",         icon:"🔄", color:"var(--purple)", desc:"Fast-respawn BR variant",  hot:false },
+        { label:"Ballistic",      icon:"🎖", color:"#fb923c",       desc:"Tactical 5v5 mode",        hot:false },
+        { label:"Team Rumble",    icon:"⚔️", color:"var(--green)",  desc:"Unlimited respawns",       hot:false },
+        { label:"LEGO Fortnite",  icon:"🧱", color:"#fbbf24",       desc:"Survival + sandbox",       hot:true  },
+        { label:"Festival",       icon:"🎸", color:"#c084fc",       desc:"Rhythm music game",        hot:false },
+        { label:"Rocket Racing",  icon:"🏎", color:"#f87171",       desc:"High-speed racing",        hot:false },
+    ];
+
+    const HOT_NOTE = "LEGO Fortnite — fastest daily cap route right now. Desert cave loop is active.";
+
+    const CREATOR_MAPS = [
+        { name:"FortM",                code:"6163-6465-2983", cat:"AFK+Active", xp:"Daily Cap",    hot:true  },
+        { name:"Prison Escape",        code:"7300-0705-2924", cat:"AFK",        xp:"5+ lvl/10min", hot:true  },
+        { name:"Lyadoll Party Royale", code:"7112-8777-0902", cat:"AFK",        xp:"~210K/4min",   hot:true  },
+        { name:"Winter Trickshot Pkr", code:"1275-4602-9363", cat:"Parkour",    xp:"~200K/sess",   hot:false },
+        { name:"Santa Slide & Chill",  code:"1631-1033-4522", cat:"Rail Slide", xp:"Steady loop",  hot:false },
+        { name:"Squid Game Tycoon",    code:"5655-2869-7519", cat:"Tycoon",     xp:"Per-hit XP",   hot:true  },
+        { name:"Sweaty Red vs Blue",   code:"2218-8993-0817", cat:"PvP",        xp:"Per-elim XP",  hot:false },
+        { name:"BHE 1v1 Build Fights", code:"7060-6523-8019", cat:"Build PvP",  xp:"Per-elim XP",  hot:false },
+        { name:"Cizzorz Deathrun 4.0", code:"2073-5292-9110", cat:"Deathrun",   xp:"Completion",   hot:false },
+        { name:"Pandvil Box Fight",    code:"6562-8953-6654", cat:"Box Fight",  xp:"Per-elim XP",  hot:false },
+    ];
+
+    const CAT_CLR = {
+        "AFK+Active":"var(--purple)","AFK":"var(--cyan)","Parkour":"var(--green)",
+        "Rail Slide":"var(--gold)","Tycoon":"var(--pink)","PvP":"#f87171",
+        "Build PvP":"#fb923c","Deathrun":"var(--cyan)","Box Fight":"#c084fc"
+    };
+
+    const STW_TRAPS = [
+        { name:"Ceiling Gas Trap",         tier:"S", type:"Ceiling", color:"var(--gold)",   desc:"DoT vs horde clusters" },
+        { name:"Ceiling Electric Field",   tier:"S", type:"Ceiling", color:"var(--gold)",   desc:"Multi-hit area damage" },
+        { name:"Wall Dynamo",              tier:"A", type:"Wall",    color:"var(--cyan)",   desc:"Stacks on husks" },
+        { name:"Floor Freeze Trap",        tier:"A", type:"Floor",   color:"var(--cyan)",   desc:"Slows Smashers hard" },
+        { name:"Ceiling Zapper",           tier:"A", type:"Ceiling", color:"var(--cyan)",   desc:"Reliable lightning dmg" },
+        { name:"Retractable Floor Spikes", tier:"B", type:"Floor",   color:"var(--purple)", desc:"Budget filler" },
+        { name:"Wall Launcher",            tier:"B", type:"Wall",    color:"var(--purple)", desc:"Redirects husks into traps" },
+    ];
+
+    const STW_GLITCHES = [
+        { name:"Trap Dupe (craft→drop)", statusLabel:"REPORTED ACTIVE", statusColor:"var(--gold)",   riskLabel:"MEDIUM RISK", riskColor:"var(--gold)" },
+        { name:"Floating Build",         statusLabel:"PATCHY",           statusColor:"var(--orange)", riskLabel:"HIGH RISK",   riskColor:"var(--red)"  },
+        { name:"Stone Wood Swap",        statusLabel:"PATCHY",           statusColor:"var(--orange)", riskLabel:"HIGH RISK",   riskColor:"var(--red)"  },
+    ];
+
+    const PATCH = {
+        riskLevel:"LOW", riskPct:18, riskColor:"var(--green)",
+        summary:"Safe farming window — Epic patch cadence is slow this cycle.",
+        safest:"AFK XP maps",
+        atRisk:"Trap dupe (community reports only)",
+        epicActivity:"Slow — no hotfix signals",
+        rec:"Farm aggressively on AFK maps. Use glitches in private lobbies only.",
+    };
+
+    // ── STATE ─────────────────────────────────────────────────────────
+
+    let state = { copiedCode:null, log:[], clock:new Date() };
+    let rootEl = null;
+
+    // ── HELPERS ───────────────────────────────────────────────────────
+
+    function fmt(d) { return d.toLocaleTimeString("en-US",{hour12:false}); }
+
+    function pushLog(icon, msg, color) {
+        state.log = [{id:Date.now()+Math.random(), icon, msg, color:color||"var(--green)", time:new Date()}, ...state.log].slice(0,30);
+        render();
+    }
+
+    function copyCode(code) {
+        if (!navigator.clipboard) return;
+        navigator.clipboard.writeText(code).then(() => {
+            state.copiedCode = code;
+            render();
+            setTimeout(() => { state.copiedCode = null; render(); }, 2200);
+        });
+    }
+
+    // ── RENDER PIECES ─────────────────────────────────────────────────
+
+    function rHeader() {
+        return `<div class="header">
+            <div class="header-left">
+                <div class="brand">FORTNITE INTEL HUB</div>
+                <div class="brand-tag">by ${CREATOR_SIGNATURE}</div>
+            </div>
+            <div class="header-right">
+                <span class="upd">✓ Updated: ${LAST_UPDATED}</span>
+                <span id="clk">${fmt(state.clock)}</span>
+            </div>
+        </div>`;
+    }
+
+    function rTicker() {
+        return `<div class="ticker-wrap">
+            <div class="ticker-label">LIVE FEED</div>
+            <div class="ticker-track"><div class="ticker-inner">
+                <span class="t-hot">🔥 LEGO Fortnite — best XP mode right now</span>
+                <span>·</span>
+                <span class="t-safe">✓ AFK maps working — Lyadoll ~210K/4min</span>
+                <span>·</span>
+                <span class="t-warn">⚠ STW trap dupe: community reports only — use at own risk</span>
+                <span>·</span>
+                <span class="t-safe">✓ Patch risk: LOW this cycle</span>
+                <span>·</span>
+                <span>Squid Game Tycoon still printing XP</span>
+                <span>·</span>
+                <span class="t-hot">🏆 Ballistic defuse = 750 XP per round</span>
+                <span>·</span>
+                <span class="t-safe">✓ Private lobbies safe for map farming</span>
+            </div></div>
+        </div>`;
+    }
+
+    function rEpicModes() {
+        const cards = EPIC_MODES.map(m =>
+            `<div class="mode-card${m.hot?' hot-mode':''}">
+                <span class="icon">${m.icon}</span>
+                <div class="label" style="color:${m.color}">${m.label}${m.hot?' 🔥':''}</div>
+                <div class="desc">${m.desc}</div>
+            </div>`
+        ).join('');
+        return `<div class="panel panel-pink">
+            <div class="panel-head">
+                <div class="panel-title" style="color:var(--pink)">🎯 EPIC MODES</div>
+                <span class="badge badge-pink">${EPIC_MODES.length} MODES</span>
+            </div>
+            <div class="panel-body">
+                <div class="section-label">ALL ACTIVE MODES</div>
+                <div class="modes-grid">${cards}</div>
+                <div class="hot-note">🔥 <strong style="color:var(--pink)">Hot pick:</strong> ${HOT_NOTE}</div>
+            </div>
+        </div>`;
+    }
+
+    function rMaps() {
+        const rows = CREATOR_MAPS.map(m =>
+            `<tr>
+                <td>${m.hot?'🔥 ':''}<span class="map-name">${m.name}</span></td>
+                <td><span style="color:${CAT_CLR[m.cat]||'var(--text-dim)'};font-size:10px;font-weight:600">${m.cat}</span></td>
+                <td class="map-xp">${m.xp}</td>
+                <td class="map-code">${m.code}</td>
+                <td><button class="copy-btn${state.copiedCode===m.code?' copied':''}" data-code="${m.code}">${state.copiedCode===m.code?'✓ COPIED':'COPY'}</button></td>
+            </tr>`
+        ).join('');
+        return `<div class="panel panel-cyan">
+            <div class="panel-head">
+                <div class="panel-title" style="color:var(--cyan)">🗺 CREATOR MAPS</div>
+                <span class="badge badge-cyan">${CREATOR_MAPS.length} MAPS</span>
+            </div>
+            <div class="panel-body">
+                <div class="section-label">XP ISLAND CODES — tap COPY to grab code</div>
+                <div style="overflow-x:auto">
+                    <table class="maps-table">
+                        <thead><tr><th>MAP NAME</th><th>TYPE</th><th>XP RATE</th><th>ISLAND CODE</th><th></th></tr></thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+                <div class="note" style="margin-top:12px">💡 XP rates are community estimates. Rotate maps if one starts underperforming after a hotfix.</div>
+            </div>
+        </div>`;
+    }
+
+    function rSTW() {
+        const trapRows = STW_TRAPS.map(t =>
+            `<div class="trap-row">
+                <div class="trap-tier" style="color:${t.color}">${t.tier}</div>
+                <div class="trap-info">
+                    <div class="trap-name">${t.name}</div>
+                    <div class="trap-desc">${t.desc}</div>
+                </div>
+                <div class="trap-type">${t.type}</div>
+            </div>`
+        ).join('');
+
+        const glitchRows = STW_GLITCHES.map(g =>
+            `<div class="glitch-row">
+                <span class="glitch-key">${g.name}</span>
+                <div class="glitch-pills">
+                    <span style="font-family:var(--font-mono);font-size:10px;color:${g.statusColor}">${g.statusLabel}</span>
+                    <span style="font-family:var(--font-mono);font-size:9px;color:${g.riskColor};background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:1px 5px;border-radius:3px">${g.riskLabel}</span>
+                </div>
+            </div>`
+        ).join('');
+
+        return `<div class="panel panel-orange">
+            <div class="panel-head">
+                <div class="panel-title" style="color:var(--orange)">🪤 SAVE THE WORLD</div>
+                <span class="badge badge-orange">STW META</span>
+            </div>
+            <div class="panel-body">
+                <div class="section-label">TRAP TIER LIST</div>
+                <div class="trap-list">${trapRows}</div>
+                <div class="section-label">COMMUNITY-REPORTED GLITCHES</div>
+                <div class="glitch-wrap">${glitchRows}</div>
+                <div class="note">⚠️ Glitch info is community-sourced — not verified. Use in private lobbies only. Can be patched any update cycle.</div>
+            </div>
+        </div>`;
+    }
+
+    function rPatch() {
+        const p = PATCH;
+        return `<div class="panel panel-purple">
+            <div class="panel-head">
+                <div class="panel-title" style="color:var(--purple)">🛡 PATCH WATCH</div>
+                <span class="badge badge-green">RISK: ${p.riskLevel}</span>
+            </div>
+            <div class="panel-body">
+                <div class="risk-meter">
+                    <div class="risk-level" style="color:${p.riskColor}">${p.riskLevel}</div>
+                    <div style="flex:1">
+                        <div style="font-size:11px;color:var(--text-mid);margin-bottom:6px">${p.summary}</div>
+                        <div class="risk-bar-wrap"><div class="risk-bar" style="width:${p.riskPct}%;background:${p.riskColor}"></div></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="risk-row"><span class="risk-key">Safest method</span><span class="risk-val" style="color:var(--green)">${p.safest}</span></div>
+                    <div class="risk-row"><span class="risk-key">Most at risk</span><span class="risk-val" style="color:var(--gold)">${p.atRisk}</span></div>
+                    <div class="risk-row"><span class="risk-key">Epic activity</span><span class="risk-val" style="color:var(--text-dim)">${p.epicActivity}</span></div>
+                    <div class="risk-row"><span class="risk-key">Recommendation</span><span class="risk-val" style="color:var(--cyan)">${p.rec}</span></div>
+                </div>
+            </div>
+        </div>`;
+    }
+
+    function rLog() {
+        if (!state.log.length) return '';
+        const entries = state.log.slice(0,8).map(l =>
+            `<div class="log-entry">
+                <span class="log-icon">${l.icon}</span>
+                <span class="log-msg" style="color:${l.color}">${l.msg}</span>
+                <span class="log-time">${fmt(l.time)}</span>
+            </div>`
+        ).join('');
+        return `<div class="panel panel-green">
+            <div class="panel-head"><div class="panel-title" style="color:var(--green)">📡 ACTIVITY LOG</div></div>
+            <div class="panel-body"><div class="log-list">${entries}</div></div>
+        </div>`;
+    }
+
+    function rFooter() {
+        return `<div class="footer">
+            <div class="sig">🔒 ${CREATOR_SIGNATURE}</div>
+            <div class="footer-sub">
+                Fortnite Intel Hub · Curated by LOOtn · Data updated manually — last check: ${LAST_UPDATED}<br>
+                Not affiliated with Epic Games. Island codes &amp; XP rates are community-sourced estimates.
+            </div>
+        </div>`;
+    }
+
+    // ── MAIN RENDER ───────────────────────────────────────────────────
+
+    function render() {
+        if (!rootEl) return;
+        rootEl.innerHTML = rHeader() + rTicker() + rEpicModes() + rMaps() +
+            `<div class="grid-2">${rSTW()}${rPatch()}</div>` +
+            rLog() + rFooter();
+
+        // Wire copy buttons
+        rootEl.querySelectorAll('.copy-btn[data-code]').forEach(btn => {
+            btn.addEventListener('click', () => copyCode(btn.getAttribute('data-code')));
+        });
+    }
+
+    // ── INIT ──────────────────────────────────────────────────────────
+
+    function init() {
+        rootEl = document.getElementById('app');
+        if (!rootEl) return;
+        render();
+
+        // Live clock only — no fake refresh
+        setInterval(() => {
+            state.clock = new Date();
+            const el = document.getElementById('clk');
+            if (el) el.textContent = fmt(state.clock);
+        }, 1000);
+
+        // Startup log messages
+        setTimeout(() => {
+            pushLog("🔒", CREATOR_SIGNATURE + " — Intel Hub loaded", "var(--gold)");
+            pushLog("✓",  "Data current as of " + LAST_UPDATED,       "var(--green)");
+            pushLog("🎯", "LEGO Fortnite hottest mode right now",      "var(--pink)");
+        }, 800);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
+</script>
+</body>
+</html>
